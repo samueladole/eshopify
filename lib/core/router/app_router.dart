@@ -51,7 +51,7 @@ class AppShell extends StatelessWidget {
 
 GoRouter createRouter() => GoRouter(
   navigatorKey: _rootKey,
-  initialLocation: '/onboarding',
+  initialLocation: const String.fromEnvironment('INITIAL_ROUTE', defaultValue: '/onboarding'),
   routes: [
     GoRoute(path: '/onboarding', builder: (_, __) => const OnboardingScreen()),
     GoRoute(path: '/welcome', builder: (_, __) => const WelcomeScreen()),
