@@ -7,26 +7,35 @@ A fully modern, premium e-commerce mobile app UI built with Flutter. The experie
 ## Highlights
 
 - Material 3 design system with **light and dark themes**
-- Clean, scalable feature-first structure
+- Clean, scalable **feature-first** architecture
 - `go_router` navigation with shell-based bottom navigation
-- Premium UI patterns: promos, deals, product discovery, ratings, cart/checkout, orders, tracking, wishlist, search, notifications, and settings
-- Reusable core widgets and mock data/state layer
-- Responsive layouts for phones and tablets
-- Subtle animations, loading skeletons, and rich empty/error-friendly states
+- Premium UI patterns: onboarding, auth, promos/deals, discovery, product detail, cart, checkout, order confirmation/tracking, wishlist, search, notifications, and settings
+- Reusable core widgets and in-memory mock data/state
+- Responsive layouts, subtle animations, loading skeletons, and empty states
+- Conversion-focused UX (prominent pricing/discounts/ratings/delivery, sticky CTAs, clear checkout)
 
 ## Tech stack
 
-- Flutter (null safety, Dart 3)
-- Material 3
-- `go_router`
-- `google_fonts`
-- `cached_network_image`
-- `flutter_svg`
-- `shimmer`
-- `flutter_animate`
-- `flutter_rating_bar`
-- `badges`
-- `intl`
+- **Flutter** (Dart 3, null safety) + **Material 3**
+- **Navigation:** `go_router`
+- **Typography:** `google_fonts`
+- **UI/media:** `cached_network_image`, `flutter_svg`, `shimmer`, `flutter_animate`, `flutter_rating_bar`, `badges`
+- **Utils:** `intl`
+
+## Screenshots
+
+| | | |
+|---|---|---|
+| **Onboarding**<br><img src="screenshots/onboarding.png" width="240" alt="Onboarding" /> | **Welcome**<br><img src="screenshots/welcome.png" width="240" alt="Welcome" /> | **Login**<br><img src="screenshots/login.png" width="240" alt="Login" /> |
+| **Sign Up**<br><img src="screenshots/signup.png" width="240" alt="Sign Up" /> | **Forgot Password**<br><img src="screenshots/forgot-password.png" width="240" alt="Forgot Password" /> | **OTP Verification**<br><img src="screenshots/otp.png" width="240" alt="OTP Verification" /> |
+| **Home**<br><img src="screenshots/home.png" width="240" alt="Home" /> | **Catalog / Shop**<br><img src="screenshots/catalog.png" width="240" alt="Catalog" /> | **Search**<br><img src="screenshots/search.png" width="240" alt="Search" /> |
+| **Product Detail**<br><img src="screenshots/product-detail.png" width="240" alt="Product Detail" /> | **Cart**<br><img src="screenshots/cart.png" width="240" alt="Cart" /> | **Wishlist**<br><img src="screenshots/wishlist.png" width="240" alt="Wishlist" /> |
+| **Checkout**<br><img src="screenshots/checkout.png" width="240" alt="Checkout" /> | **Order Confirmation**<br><img src="screenshots/order-confirmation.png" width="240" alt="Order Confirmation" /> | **Orders**<br><img src="screenshots/orders.png" width="240" alt="Orders" /> |
+| **Order Detail**<br><img src="screenshots/order-detail.png" width="240" alt="Order Detail" /> | **Order Tracking**<br><img src="screenshots/order-tracking.png" width="240" alt="Order Tracking" /> | **Account**<br><img src="screenshots/account.png" width="240" alt="Account" /> |
+| **Addresses**<br><img src="screenshots/addresses.png" width="240" alt="Addresses" /> | **Payment Methods**<br><img src="screenshots/payments.png" width="240" alt="Payment Methods" /> | **Notifications**<br><img src="screenshots/notifications.png" width="240" alt="Notifications" /> |
+| **Settings**<br><img src="screenshots/settings.png" width="240" alt="Settings" /> | | |
+
+> Screenshots captured from the iOS Simulator (iPhone). Actual appearance may vary by device, theme, and platform.
 
 ## Implemented screens
 
@@ -71,16 +80,17 @@ lib/
     settings/presentation/       # App settings
     wishlist/presentation/       # Wishlist
   main.dart
+screenshots/              # App page screenshots used in this README
 ```
 
 ## Core reusable widgets
 
-Located in `lib/core/widgets/` (e.g. `common_widgets.dart`): `PrimaryButton`, `SecondaryButton`, `CustomTextField`, `ProductCard`, `ProductImage`, `PriceText`, `RatingStars`, `QuantityStepper`, `SectionHeader`, `EmptyState`, `LoadingSkeleton`, and shared UI building blocks used across screens. Additional UI patterns (filter/sort sheets, address/payment tiles, timelines, badges, etc.) are implemented within feature screens and can be extracted further as the app grows.
+Located in `lib/core/widgets/common_widgets.dart`: `PrimaryButton`, `SecondaryButton`, `CustomTextField`, `ProductImage`, `PriceText`, `RatingStars`, `QuantityStepper`, `SectionHeader`, `EmptyState`, `LoadingSkeleton`, `ProductCard`, and shared UI building blocks used across screens. Additional UI patterns (filter/sort sheets, address/payment tiles, timelines, badges, etc.) are implemented within feature screens and can be extracted further as the app grows.
 
 ## Mock data & local state
 
 - **Mock data:** `lib/core/mock/models.dart`, `lib/core/mock/mock_data.dart`
-  - Products, categories, brands, variants, reviews, cart seed patterns, orders, addresses, payment methods, promotions, notifications, and search suggestions
+  - Products, categories, brands, variants, reviews, orders, addresses, payment methods, promotions, notifications, and search suggestions
 - **Local app state:** `lib/core/state/app_state.dart`
   - Theme mode, cart/wishlist, orders, addresses, payments, notifications, preferences
   - All user actions (add to cart, place order, favorites, etc.) operate on in-memory mock/local state
@@ -104,6 +114,8 @@ To analyze and test:
 flutter analyze
 flutter test
 ```
+
+> Tip: for development/screenshots you can deep-link to a route with `--dart-define=INITIAL_ROUTE=/home` (supports routes like `/product/p1`, `/orders`, etc.).
 
 ## Where to connect a real commerce backend later
 
